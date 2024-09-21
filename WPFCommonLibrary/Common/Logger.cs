@@ -19,7 +19,7 @@
         public Logger() { }
         #endregion
 
-        #region publicメソッド
+        #region 公開メソッド
         /// <summary>
         /// Informationレベル
         /// </summary>
@@ -70,7 +70,7 @@
         }
         #endregion
 
-        #region privateメソッド
+        #region 内部メソッド
         #endregion
     }
 }
