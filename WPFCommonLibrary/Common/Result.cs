@@ -20,11 +20,11 @@
         /// <summary>
         /// ステータス
         /// </summary>
-        public bool Status { get => _status; private set => _status = value; }
+        public bool Status { get => _status; }
         /// <summary>
         /// メッセージ
         /// </summary>
-        public string Message { get => _message; private set => _message = value; }
+        public string Message { get => _message; }
         #endregion
 
         #region コンストラクタ
@@ -33,8 +33,8 @@
         /// </summary>
         public Result ()
         {
-            Status = false;
-            Message = string.Empty;
+            _status = false;
+            _message = string.Empty;
         }
         #endregion
 
@@ -47,8 +47,8 @@
         /// </summary>
         public void Success ()
         {
-            Status = false;
-            Message = string.Empty;
+            _status = false;
+            _message = string.Empty;
         }
 
         /// <summary>
@@ -57,8 +57,8 @@
         /// <param name="message">メッセージ</param>
         public void Failure ( string message )
         {
-            Status = true;
-            Message = message;
+            _status = true;
+            _message = message;
         }
         #endregion
     }
@@ -88,17 +88,17 @@
         /// <summary>
         /// 成功／失敗
         /// </summary>
-        public bool Status { get => _status; private set => _status = value; }
+        public bool Status { get => _status; }
 
         /// <summary>
         /// メッセージ
         /// </summary>
-        public string Message { get => _message; private set => _message = value; }
+        public string Message { get => _message; }
 
         /// <summary>
         /// データ
         /// </summary>
-        public T? Data { get => _data; private set => _data = value; }
+        public T? Data { get => _data; }
         #endregion
 
         #region コンストラクタ
@@ -107,9 +107,9 @@
         /// </summary>
         public Result ()
         {
-            Status = false;
-            Message = string.Empty;
-            Data = default;
+            _status = false;
+            _message = string.Empty;
+            _data = default;
         }
         #endregion
 
@@ -120,9 +120,9 @@
         /// <param name="data">データ</param>
         public void Success ( T? data )
         {
-            Status = false;
-            Message = string.Empty;
-            Data = data;
+            _status = false;
+            _message = string.Empty;
+            _data = data;
         }
 
         /// <summary>
@@ -131,9 +131,9 @@
         /// <param name="message">メッセージ</param>
         public void Failure ( string message )
         {
-            Status = true;
-            Message = message;
-            Data = default;
+            _status = true;
+            _message = message;
+            _data = default;
         }
         #endregion
 
