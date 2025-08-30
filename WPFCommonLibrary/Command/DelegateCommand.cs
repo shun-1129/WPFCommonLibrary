@@ -2,58 +2,105 @@
 
 namespace WPFCommonLibrary.Command
 {
+    /// <summary>
+    /// デリゲートコマンドクラス
+    /// </summary>
     public class DelegateCommand : ICommand
     {
-        public event EventHandler CanExecuteChanged;
+        /// <summary>
+        /// イベントハンドラー
+        /// </summary>
+        public event EventHandler? CanExecuteChanged;
 
         private readonly Action _action;
-        private readonly Func<bool> _canExecute;
+        private readonly Func<bool>? _canExecute;
 
-        public DelegateCommand ( Action action , Func<bool> canExecute = default )
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="canExecute"></param>
+        public DelegateCommand ( Action action , Func<bool>? canExecute = null )
         {
             this._action = action;
             this._canExecute = canExecute;
         }
 
-        public bool CanExecute ( object parameter )
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        public bool CanExecute ( object? parameter )
         {
             return _canExecute?.Invoke () ?? true;
         }
 
-        public void Execute ( object parameter )
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameter"></param>
+        public void Execute ( object? parameter )
         {
             _action?.Invoke ();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void DelegateCanExecute ()
         {
             CanExecuteChanged?.Invoke ( this , EventArgs.Empty );
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class DelegateCommand<T> : ICommand
     {
-        public event EventHandler CanExecuteChanged;
+        /// <summary>
+        /// 
+        /// </summary>
+        public event EventHandler? CanExecuteChanged;
 
         private readonly Action<T> _action;
-        private readonly Func<T, bool> _canExecute;
+        private readonly Func<T, bool>? _canExecute;
 
-        public DelegateCommand ( Action<T> action , Func<T , bool> canExecute = default )
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="canExecute"></param>
+        public DelegateCommand ( Action<T> action , Func<T , bool>? canExecute = null )
         {
             this._action = action;
             this._canExecute = canExecute;
         }
 
-        public bool CanExecute ( object parameter )
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        public bool CanExecute ( object? parameter )
         {
-            return _canExecute?.Invoke ( ( T ) parameter ) ?? true;
+            return _canExecute?.Invoke ( ( T ) parameter! ) ?? true;
         }
 
-        public void Execute ( object parameter )
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameter"></param>
+        public void Execute ( object? parameter )
         {
-            _action?.Invoke ( ( T ) parameter );
+            _action?.Invoke ( ( T ) parameter! );
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void DelegateCanExecute ()
         {
             CanExecuteChanged?.Invoke ( this , EventArgs.Empty );

@@ -1,5 +1,8 @@
-﻿namespace WPFCommonLibrary.Data
+﻿namespace WPFCommonLibrary.Common.Data
 {
+    /// <summary>
+    /// 各種データ
+    /// </summary>
     public class Data
     {
         /// <summary>

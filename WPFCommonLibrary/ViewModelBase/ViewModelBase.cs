@@ -2,10 +2,20 @@
 
 namespace WPFCommonLibrary.ViewModelBase
 {
+    /// <summary>
+    /// ViewModelBaseクラス
+    /// </summary>
     public class ViewModelBase : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        /// <summary>
+        /// イベントハンドラー
+        /// </summary>
+        public event PropertyChangedEventHandler? PropertyChanged;
 
+        /// <summary>
+        /// プロパティ更新
+        /// </summary>
+        /// <param name="propertyName"></param>
         public void RaisePropertyChanged ( string propertyName )
         {
             if ( PropertyChanged != null )
